@@ -49,9 +49,10 @@ public final class RhinoUtils {
 
     private static final int OPTIMIZATION_DEFAULT = 0;
 
-    private static final String SETUP_KOTLIN_OUTPUT = "kotlin.kotlin.io.output = new kotlin.kotlin.io.BufferedOutput();";
+    public static final String SETUP_KOTLIN_OUTPUT = "kotlin.kotlin.io.output = new kotlin.kotlin.io.BufferedOutput();";
     private static final String FLUSH_KOTLIN_OUTPUT = "kotlin.kotlin.io.output.flush();";
     public static final String GET_KOTLIN_OUTPUT = "kotlin.kotlin.io.output.buffer;";
+    public static final String RHINO_POLYFILLS_RELATIVE_PATH = "../../js/js.translator/testData/rhino-polyfills.js";
 
     @NotNull
     private static final Map<EcmaVersion, ScriptableObject> versionToScope = ContainerUtil.newHashMap();
