@@ -18,7 +18,23 @@ package org.jetbrains.kotlin.serialization.builtins
 
 import org.jetbrains.kotlin.builtins.BuiltInSerializerProtocol
 import org.jetbrains.kotlin.serialization.KotlinSerializerExtensionBase
+import org.jetbrains.kotlin.serialization.ProtoBuf
+import org.jetbrains.kotlin.types.KotlinType
 
 class BuiltInsSerializerExtension : KotlinSerializerExtensionBase(BuiltInSerializerProtocol) {
+    private val errorTypeRegex = "\\[ERROR : (.+)]".toRegex()
+
+    private val shortNameToFullName = mapOf(
+            "IntRange" to "kotlin/ranges/IntRange",
+            "LongRange" to "kotlin/ranges/LongRange",
+            "CharRange" to "kotlin/ranges/CharRange"
+    )
+
     override fun shouldUseTypeTable(): Boolean = true
+
+    override fun serializeErrorType(type: KotlinType, builder: ProtoBuf.Type.Builder) {
+        val (name) = errorTypeRegex.matchEntire(type.toString())?.destructured ?: return super.serializeErrorType(type, builder)
+        val fullName = shortNameToFullName[name] ?: return super.serializeErrorType(type, builder)
+        builder.className = stringTable.getStringIndex(fullName)
+    }
 }
