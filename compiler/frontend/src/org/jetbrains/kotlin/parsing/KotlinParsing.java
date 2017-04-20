@@ -174,6 +174,9 @@ public class KotlinParsing extends AbstractKotlinParsing {
         checkForUnexpectedSymbols();
 
         blockMarker.done(BLOCK);
+        // It is crucial property that the script is the last child in the file:
+        // we assume that it's true in KtFile.getScript() to retrieve the script faster
+        // If you change it, it's worth to create some kind of cache in KtFile
         scriptMarker.done(SCRIPT);
         fileMarker.done(KT_FILE);
     }

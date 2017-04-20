@@ -185,7 +185,8 @@ public class KtFile extends PsiFileBase implements KtDeclarationContainer, KtAnn
 
     @Nullable
     public KtScript getScript() {
-        return PsiTreeUtil.getChildOfType(this, KtScript.class);
+        if (getLastChild() instanceof KtScript) return (KtScript) getLastChild();
+        return null;
     }
 
     public boolean isScript() {
