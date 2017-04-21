@@ -114,7 +114,7 @@ object NashornJsTestChecker {
         listOf(
                 BasicBoxTest.TEST_DATA_DIR_PATH + "nashorn-polyfills.js",
                 BasicBoxTest.DIST_DIR_JS_PATH + "kotlin.js",
-                BasicBoxTest.DIST_DIR_JS_PATH + "../classes/kotlin-test-js/kotlin-test.js"
+                BasicBoxTest.DIST_DIR_JS_PATH + "kotlin-test.js"
         ).forEach(engine::loadFile)
 
         engine.eval("this['kotlin-test'].kotlin.test._asserter = new this['kotlin-test'].kotlin.test.DefaultAsserter()")
