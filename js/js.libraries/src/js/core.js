@@ -38,16 +38,18 @@ Kotlin.hashCode = function (obj) {
     if (obj == null) {
         return 0;
     }
-    if ("function" == typeof obj.hashCode) {
-        return obj.hashCode();
-    }
     var objType = typeof obj;
-    if ("object" == objType || "function" == objType) {
+    if ("object" === objType) {
+        return "function" === typeof obj.hashCode ? obj.hashCode() : getObjectHashCode(obj);
+    }
+    if ("function" === objType) {
         return getObjectHashCode(obj);
-    } else if ("number" == objType) {
+    }
+    if ("number" === objType) {
         // TODO: a more elaborate code is needed for floating point values.
         return obj | 0;
-    } if ("boolean" == objType) {
+    }
+    if ("boolean" === objType) {
         return Number(obj)
     }
 
