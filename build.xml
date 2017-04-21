@@ -934,11 +934,11 @@
             depends="android-extensions-compiler,allopen-compiler-plugin,noarg-compiler-plugin,sam-with-receiver-compiler-plugin,source-sections-compiler-plugin,annotation-processing,daemon-client,compiler-client-embeddable,kotlin-build-common-test" />
 
     <target name="dist"
-            depends="clean,init,prepare-dist,preloader,runner,serialize-builtins,compiler-fork,compiler-sources,ant-tools,runtime,other-artifacts"
+            depends="clean,init,prepare-dist,preloader,runner,serialize-builtins,compiler-fork,compiler-sources,ant-tools,runtime,stdlib-js,other-artifacts"
             description="Builds redistributables from sources"/>
 
     <target name="dist-no-fork"
-            depends="clean,init,prepare-dist,preloader,runner,serialize-builtins,compiler,compiler-sources,ant-tools,runtime,other-artifacts"
+            depends="clean,init,prepare-dist,preloader,runner,serialize-builtins,compiler,compiler-sources,ant-tools,runtime,stdlib-js,other-artifacts"
             description="Builds redistributables from sources"/>
 
     <target name="dist-quick-compiler-only"
